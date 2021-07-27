@@ -32,18 +32,18 @@ spec:
 
 # NPM test execution
 
-  # - name: run-tests
-  #   taskRef:
-  #     name: npm
-  #   workspaces:
-  #   - name: source
-  #     workspace: pipeline-shared-data
-  #   params:
-  #   - name: ARGS
-  #     value:
-  #     - install-ci-test
-  #   runAfter: 
-  #     - clone-repository
+  - name: run-tests
+    taskRef:
+      name: npm
+    workspaces:
+    - name: source
+      workspace: pipeline-shared-data
+    params:
+    - name: ARGS
+      value:
+      - install-ci-test
+    runAfter: 
+      - clone-repository
 
 # creazione build
 
@@ -52,8 +52,7 @@ spec:
       kind: ClusterTask
       name: buildah
     runAfter:
-     # - run-tests
-       - clone-repository
+      - run-tests
     params:
     - name: IMAGE
       value: "quay.io/nicolabe92/next-app:$(tasks.clone-repository.results.commit)"
