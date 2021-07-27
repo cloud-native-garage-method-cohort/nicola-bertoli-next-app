@@ -15,8 +15,6 @@ spec:
   tasks:
 
 # git clone
-
-
   - name: clone-repository
     taskRef:
       kind: ClusterTask
@@ -31,7 +29,6 @@ spec:
 
 
 # NPM test execution
-
   - name: run-tests
     taskRef:
       name: npm
